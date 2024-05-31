@@ -30,4 +30,4 @@ To get a local copy up and running follow these simple steps.
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/yourusername/nutrition-tracking-app.git
+   git clone https://github.com/yusufaksoy57/nutrition-tracking-app.git
