@@ -5,7 +5,7 @@ import Firebase
 @main
 struct eatingHabitsApp: App {
     @StateObject var viewModel = AuthViewModel()
-    
+    @StateObject var viewData = UsersGoalData()
     init() {
         FirebaseApp.configure()
     }
@@ -13,6 +13,7 @@ struct eatingHabitsApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(AuthViewModel())  // Injecting AuthViewModel
+                .environmentObject(UsersGoalData())
         }
     }
 }

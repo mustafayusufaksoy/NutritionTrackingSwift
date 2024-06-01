@@ -8,19 +8,15 @@ struct SwiftUIView: View {
     var body: some View {
         NavigationStack {
             VStack{
-                Image("Designer")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 100, height: 120)
-                    .padding(.vertical, 32)
-                    
+                Spacer()
+                Text("Hello!")
+                    .font(.title)
                 VStack(spacing: 24) {
                     InputView(text: $email,
                               title: "Email Address",
                               placeholder: "name@example.com",
                               isSecureField: false)
                         .autocapitalization(.none)
-                    
                     InputView(text: $password,
                               title: "Password",
                               placeholder: "Please Enter Password",

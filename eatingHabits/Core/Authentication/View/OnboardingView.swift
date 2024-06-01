@@ -1,4 +1,5 @@
 import SwiftUI
+import Firebase
 
 struct OnboardingView: View {
     @State private var gender: String = "male"
@@ -9,11 +10,45 @@ struct OnboardingView: View {
     @State private var showProfileView = false
     @State private var navigateToDailyTrackerView = false
 
+    func saveUserData() {
+        let db = Firestore.firestore()
+        let userData = [
+            "gender": gender,
+            "height": height,
+            "weight": weight,
+            "id": viewModel.currentUser?.id ?? "",
+            "fullname": viewModel.currentUser?.fullname ?? "Yusuf"
+        ] as [String : Any]
 
+        // Öncelikle mevcut kullanıcının `id`'sini alıyoruz.
+        if let userID = viewModel.currentUser?.id, !userID.isEmpty {
+            // Bu `id`'ye sahip bir belge zaten varsa, üzerine yazarak güncelleyeceğiz.
+            db.collection("usersGoalData").document(userID).setData(userData, merge: true) { error in
+                if let error = error {
+                    print("Error updating document: \(error)")
+                } else {
+                    print("Document updated successfully")
+                    navigateToGoalSetting = true
+                }
+            }
+        } else {
+            // Kullanıcı `id`'si yoksa yeni bir belge oluştururuz.
+            db.collection("usersGoalData").addDocument(data: userData) { error in
+                if let error = error {
+                    print("Error adding document: \(error)")
+                } else {
+                    print("Document added successfully")
+                    navigateToGoalSetting = true
+                }
+            }
+        }
+    }
+
+    
     var body: some View {
         NavigationStack {
             VStack {
-                Text(viewModel.currentUser?.fullname ?? "Yusuf")
+                Text("Welcome, \(viewModel.currentUser?.fullname ?? "Yusuf")")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .padding(.top, 50)
@@ -42,6 +77,7 @@ struct OnboardingView: View {
                     .fontWeight(.semibold)
                 
                 Button("Continue") {
+                    saveUserData()
                     navigateToGoalSetting = true
                 }
                 .buttonStyle(.borderedProminent)

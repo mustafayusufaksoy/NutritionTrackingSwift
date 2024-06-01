@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		97080A772C0A3F080064B484 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97080A762C0A3F080064B484 /* OnboardingView.swift */; };
 		97080A792C0A47DA0064B484 /* DailyTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97080A782C0A47DA0064B484 /* DailyTrackerView.swift */; };
+		970ACF122C0B340800F536D0 /* UsersGoalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970ACF112C0B340800F536D0 /* UsersGoalData.swift */; };
 		9748725A2C07A6B2003961DE /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974872592C07A6B2003961DE /* InputView.swift */; };
 		9748725C2C07E19F003961DE /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9748725B2C07E19F003961DE /* RegistrationView.swift */; };
 		9748725E2C07E587003961DE /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9748725D2C07E587003961DE /* ProfileView.swift */; };
@@ -48,6 +49,7 @@
 /* Begin PBXFileReference section */
 		97080A762C0A3F080064B484 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		97080A782C0A47DA0064B484 /* DailyTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTrackerView.swift; sourceTree = "<group>"; };
+		970ACF112C0B340800F536D0 /* UsersGoalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersGoalData.swift; sourceTree = "<group>"; };
 		974872592C07A6B2003961DE /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		9748725B2C07E19F003961DE /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		9748725D2C07E587003961DE /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				974872682C07F04D003961DE /* AuthViewModel.swift */,
+				970ACF112C0B340800F536D0 /* UsersGoalData.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				C6F365AE2C079BDE00B92E82 /* eatingHabitsApp.swift in Sources */,
 				97080A772C0A3F080064B484 /* OnboardingView.swift in Sources */,
 				97080A792C0A47DA0064B484 /* DailyTrackerView.swift in Sources */,
+				970ACF122C0B340800F536D0 /* UsersGoalData.swift in Sources */,
 				C6F365DF2C079EEC00B92E82 /* LoginView.swift in Sources */,
 				974872622C07EA1D003961DE /* User.swift in Sources */,
 				9748725E2C07E587003961DE /* ProfileView.swift in Sources */,

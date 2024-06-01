@@ -2,15 +2,14 @@ import SwiftUI
 
 struct DailyTrackerView: View {
     @EnvironmentObject var viewModel: AuthViewModel
+    @EnvironmentObject var usersGoalData: UsersGoalData // Add this
 
-    // Example data structure for meals
     struct Meal {
         var name: String
-        var type: String // e.g., Breakfast, Lunch, Dinner
+        var type: String
         var calories: Int
     }
     
-    // Sample data
     @State private var meals: [Meal] = [
         Meal(name: "Greek Salad", type: "Breakfast", calories: 200),
         Meal(name: "Chicken Stake", type: "Lunch", calories: 350),
@@ -24,16 +23,14 @@ struct DailyTrackerView: View {
         NavigationView {
             VStack {
                 Text("Hello \(viewModel.currentUser?.fullname ?? "Yusuf"), how are you today?")
-                                .font(.title)
-                                .padding()
-                               
-                HStack {
-                    ProgressBar(progress: Double(totalCalories - remainingCalories) / Double(totalCalories), color: Color.blue)
-                        .frame(height: 20)
-                    Text("\(remainingCalories) Cal Remaining")
+                    .font(.title)
+                    .padding()
+                HStack{
+                    Text("Height: \(usersGoalData.height) cm")
+                        .padding()
+                    Text("Weight: \(usersGoalData.weight) kg")
+                        .padding()
                 }
-                .padding()
-
                 List {
                     ForEach(meals, id: \.name) { meal in
                         HStack {
@@ -59,6 +56,9 @@ struct DailyTrackerView: View {
                 .buttonStyle(.borderedProminent)
                 .padding()
             }
+        }
+        .onAppear {
+            usersGoalData.fetchUserData() // Görünüm yüklendiğinde kullanıcı verilerini çek
         }
     }
 }
@@ -88,5 +88,6 @@ struct ProgressBar: View {
 struct DailyTrackerView_Previews: PreviewProvider {
     static var previews: some View {
         DailyTrackerView()
+            .environmentObject(AuthViewModel()) // Ensure these are provided
     }
 }
