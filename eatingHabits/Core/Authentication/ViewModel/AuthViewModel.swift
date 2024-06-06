@@ -44,7 +44,6 @@ class AuthViewModel: ObservableObject {
         }
     }
 
-    
     func signOut() {
         do {
             try Auth.auth().signOut()  // This function is synchronous in nature and doesn't need `await`.
@@ -55,7 +54,6 @@ class AuthViewModel: ObservableObject {
         }
     }
 
-
     func deleteAccount() {
         // Implementation of delete account functionality if needed
     }
@@ -65,6 +63,4 @@ class AuthViewModel: ObservableObject {
         guard let snapshot = try? await Firestore.firestore().collection("users").document(uid).getDocument() else {return}
         self.currentUser = try? snapshot.data(as: User.self)
     }
-
-
 }

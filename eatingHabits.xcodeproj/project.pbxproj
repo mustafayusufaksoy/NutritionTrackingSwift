@@ -19,6 +19,9 @@
 		974872692C07F04D003961DE /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974872682C07F04D003961DE /* AuthViewModel.swift */; };
 		9748726B2C07F239003961DE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 9748726A2C07F239003961DE /* FirebaseAuth */; };
 		9748726D2C07FB6A003961DE /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9748726C2C07FB6A003961DE /* FirebaseFirestoreSwift */; };
+		97EF34E92C1207DE00091CE9 /* FoodSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EF34E82C1207DE00091CE9 /* FoodSelection.swift */; };
+		97EF34EE2C1244AE00091CE9 /* MealViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EF34ED2C1244AE00091CE9 /* MealViewModel.swift */; };
+		97EF34F12C124ED400091CE9 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 97EF34F02C124ED400091CE9 /* SDWebImageSwiftUI */; };
 		C6F365AE2C079BDE00B92E82 /* eatingHabitsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F365AD2C079BDE00B92E82 /* eatingHabitsApp.swift */; };
 		C6F365B02C079BDE00B92E82 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F365AF2C079BDE00B92E82 /* ContentView.swift */; };
 		C6F365B22C079BDF00B92E82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6F365B12C079BDF00B92E82 /* Assets.xcassets */; };
@@ -57,6 +60,8 @@
 		974872612C07EA1D003961DE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		974872632C07EF05003961DE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		974872682C07F04D003961DE /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		97EF34E82C1207DE00091CE9 /* FoodSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSelection.swift; sourceTree = "<group>"; };
+		97EF34ED2C1244AE00091CE9 /* MealViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealViewModel.swift; sourceTree = "<group>"; };
 		C6F365AA2C079BDE00B92E82 /* eatingHabits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eatingHabits.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6F365AD2C079BDE00B92E82 /* eatingHabitsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eatingHabitsApp.swift; sourceTree = "<group>"; };
 		C6F365AF2C079BDE00B92E82 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -65,7 +70,7 @@
 		C6F365BA2C079BE000B92E82 /* eatingHabitsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = eatingHabitsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6F365BE2C079BE000B92E82 /* eatingHabitsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eatingHabitsTests.swift; sourceTree = "<group>"; };
 		C6F365C42C079BE000B92E82 /* eatingHabitsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = eatingHabitsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C6F365C82C079BE000B92E82 /* eatingHabitsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eatingHabitsUITests.swift; sourceTree = "<group>"; };
+		C6F365C82C079BE000B92E82 /* eatingHabitsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eatingHabitsUITests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C6F365CA2C079BE000B92E82 /* eatingHabitsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eatingHabitsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C6F365DE2C079EEC00B92E82 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97EF34F12C124ED400091CE9 /* SDWebImageSwiftUI in Frameworks */,
 				9748726B2C07F239003961DE /* FirebaseAuth in Frameworks */,
 				9748726D2C07FB6A003961DE /* FirebaseFirestoreSwift in Frameworks */,
 			);
@@ -102,6 +108,7 @@
 			children = (
 				974872682C07F04D003961DE /* AuthViewModel.swift */,
 				970ACF112C0B340800F536D0 /* UsersGoalData.swift */,
+				97EF34ED2C1244AE00091CE9 /* MealViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -113,6 +120,7 @@
 				9748725B2C07E19F003961DE /* RegistrationView.swift */,
 				97080A762C0A3F080064B484 /* OnboardingView.swift */,
 				97080A782C0A47DA0064B484 /* DailyTrackerView.swift */,
+				97EF34E82C1207DE00091CE9 /* FoodSelection.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -255,6 +263,7 @@
 			packageProductDependencies = (
 				9748726A2C07F239003961DE /* FirebaseAuth */,
 				9748726C2C07FB6A003961DE /* FirebaseFirestoreSwift */,
+				97EF34F02C124ED400091CE9 /* SDWebImageSwiftUI */,
 			);
 			productName = eatingHabits;
 			productReference = C6F365AA2C079BDE00B92E82 /* eatingHabits.app */;
@@ -330,6 +339,7 @@
 			mainGroup = C6F365A12C079BDE00B92E82;
 			packageReferences = (
 				974872652C07EFBD003961DE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				97EF34EF2C124EB000091CE9 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = C6F365AB2C079BDE00B92E82 /* Products */;
 			projectDirPath = "";
@@ -374,6 +384,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97EF34E92C1207DE00091CE9 /* FoodSelection.swift in Sources */,
+				97EF34EE2C1244AE00091CE9 /* MealViewModel.swift in Sources */,
 				C6F365B02C079BDE00B92E82 /* ContentView.swift in Sources */,
 				9748725A2C07A6B2003961DE /* InputView.swift in Sources */,
 				C6F365AE2C079BDE00B92E82 /* eatingHabitsApp.swift in Sources */,
@@ -719,6 +731,14 @@
 				minimumVersion = 10.27.0;
 			};
 		};
+		97EF34EF2C124EB000091CE9 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -731,6 +751,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 974872652C07EFBD003961DE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestoreSwift;
+		};
+		97EF34F02C124ED400091CE9 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 97EF34EF2C124EB000091CE9 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

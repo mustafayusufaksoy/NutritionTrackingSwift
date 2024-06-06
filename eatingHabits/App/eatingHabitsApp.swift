@@ -6,6 +6,8 @@ import Firebase
 struct eatingHabitsApp: App {
     @StateObject var viewModel = AuthViewModel()
     @StateObject var viewData = UsersGoalData()
+    @StateObject var viewMeal = MealViewModel()
+
     init() {
         FirebaseApp.configure()
     }
@@ -14,6 +16,7 @@ struct eatingHabitsApp: App {
             ContentView()
                 .environmentObject(AuthViewModel())  // Injecting AuthViewModel
                 .environmentObject(UsersGoalData())
+                .environmentObject(MealViewModel())
         }
     }
 }

@@ -7,10 +7,56 @@ struct SwiftUIView: View {
 
     var body: some View {
         NavigationStack {
+            // Top Image
+            Image("food")
+                .renderingMode(.original)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 356, height: 480)
+                .clipped()
+                .overlay(alignment: .topLeading) {
+                    // Hero
+                    VStack(alignment: .leading, spacing: 11) {
+                        // App Icon
+                        RoundedRectangle(cornerRadius: 17, style: .continuous)
+                            .fill(.yellow)
+                            .frame(width: 72, height: 72)
+                            .clipped()
+                            .shadow(color: Color(.sRGBLinear, red: 0/255, green: 0/255, blue: 0/255).opacity(0.12), radius: 8, x: 0, y: 4)
+                            .overlay {
+                                Image(systemName: "fork.knife")
+                                    .imageScale(.large)
+                                    .symbolRenderingMode(.multicolor)
+                                    .font(.system(size: 31, weight: .regular, design: .default))
+                                    .foregroundStyle(Color(.systemBackground))
+                            }
+                        VStack(alignment: .leading, spacing: 1) {
+                            Text("FitAI")
+                                .font(.system(.largeTitle, weight: .medium))
+                                .foregroundStyle(Color(.black))
+                            Text("Welcome to the future")
+                                .font(.system(.headline, weight: .medium))
+                                .frame(width: 190, alignment: .leading)
+                                .clipped()
+                                .multilineTextAlignment(.leading)
+                                .foregroundStyle(Color(.black))
+                        }
+                    }
+                    .padding()
+                    .padding(.top, 42)
+                }
+                .overlay(alignment: .bottom) {
+                    Group {
+                        
+                    }
+                }
+                .mask {
+                    RoundedRectangle(cornerRadius: 24, style: .continuous)
+                }
+                .padding()
+                .padding(.top, 40)
+                .shadow(color: Color(.sRGBLinear, red: 0/255, green: 0/255, blue: 0/255).opacity(0.15), radius: 18, x: 0, y: 14)
             VStack{
-                Spacer()
-                Text("Hello!")
-                    .font(.title)
                 VStack(spacing: 24) {
                     InputView(text: $email,
                               title: "Email Address",

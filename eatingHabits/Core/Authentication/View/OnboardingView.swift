@@ -6,45 +6,13 @@ struct OnboardingView: View {
     @State private var height: Double = 173
     @State private var weight: Double = 72
     @State private var navigateToGoalSetting = false
+    @State private var navigateToSkip = false
     @EnvironmentObject var viewModel: AuthViewModel
     @State private var showProfileView = false
+    @State private var showAlert = false
     @State private var navigateToDailyTrackerView = false
 
-    func saveUserData() {
-        let db = Firestore.firestore()
-        let userData = [
-            "gender": gender,
-            "height": height,
-            "weight": weight,
-            "id": viewModel.currentUser?.id ?? "",
-            "fullname": viewModel.currentUser?.fullname ?? "Yusuf"
-        ] as [String : Any]
 
-        // Öncelikle mevcut kullanıcının `id`'sini alıyoruz.
-        if let userID = viewModel.currentUser?.id, !userID.isEmpty {
-            // Bu `id`'ye sahip bir belge zaten varsa, üzerine yazarak güncelleyeceğiz.
-            db.collection("usersGoalData").document(userID).setData(userData, merge: true) { error in
-                if let error = error {
-                    print("Error updating document: \(error)")
-                } else {
-                    print("Document updated successfully")
-                    navigateToGoalSetting = true
-                }
-            }
-        } else {
-            // Kullanıcı `id`'si yoksa yeni bir belge oluştururuz.
-            db.collection("usersGoalData").addDocument(data: userData) { error in
-                if let error = error {
-                    print("Error adding document: \(error)")
-                } else {
-                    print("Document added successfully")
-                    navigateToGoalSetting = true
-                }
-            }
-        }
-    }
-
-    
     var body: some View {
         NavigationStack {
             VStack {
@@ -76,17 +44,25 @@ struct OnboardingView: View {
                 Text("Weight \(Int(weight))kg")
                     .fontWeight(.semibold)
                 
-                Button("Continue") {
-                    saveUserData()
-                    navigateToGoalSetting = true
+                HStack{
+                    Button("Continue") {
+                        navigateToGoalSetting = true
+                    }
+                    Button("Skip") {
+                        navigateToDailyTrackerView = true
+                    }
+                }
+                .padding()
+                .navigationDestination(isPresented: $navigateToGoalSetting) {
+                    GoalSettingView(gender: gender, height: height, weight: weight)
                 }
                 .buttonStyle(.borderedProminent)
                 .padding()
+                .navigationDestination(isPresented: $navigateToDailyTrackerView) {
+                    DailyTrackerView()
+                }
             }
             .padding()
-            .navigationDestination(isPresented: $navigateToGoalSetting) {
-                GoalSettingView()
-            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
@@ -123,11 +99,47 @@ struct GenderSelectionButton: View {
 }
 
 struct GoalSettingView: View {
+    var gender: String
+    var height: Double
+    var weight: Double
     @State private var goalWeight: Double = 80
-    @State private var navigateToDailyTrackerView = false // Declare the navigation state
+    @State private var navigateToDailyTrackerView = false
+    @EnvironmentObject var viewModel: AuthViewModel
+
+    func saveUserData() {
+        let db = Firestore.firestore()
+        let userData = [
+            "gender": gender,
+            "height": height,
+            "weight": weight,
+            "goalWeight": goalWeight,
+            "id": viewModel.currentUser?.id ?? "",
+            "fullname": viewModel.currentUser?.fullname ?? "Yusuf"
+        ] as [String : Any]
+
+        if let userID = viewModel.currentUser?.id, !userID.isEmpty {
+            db.collection("usersGoalData").document(userID).setData(userData, merge: true) { error in
+                if let error = error {
+                    print("Error updating document: \(error)")
+                } else {
+                    print("Document updated successfully")
+                    navigateToDailyTrackerView = true
+                }
+            }
+        } else {
+            db.collection("usersGoalData").addDocument(data: userData) { error in
+                if let error = error {
+                    print("Error adding document: \(error)")
+                } else {
+                    print("Document added successfully")
+                    navigateToDailyTrackerView = true
+                }
+            }
+        }
+    }
 
     var body: some View {
-        NavigationStack { // Ensure you use NavigationStack to utilize navigationDestination
+        NavigationStack {
             VStack {
                 Text("Your Goals")
                     .font(.largeTitle)
@@ -143,24 +155,23 @@ struct GoalSettingView: View {
                 Text("Goal Weight \(Int(goalWeight))kg")
                     .fontWeight(.semibold)
 
-                Button("Continue") {
-                    navigateToDailyTrackerView = true
+                Button("Update") {
+                    saveUserData()
                 }
                 .buttonStyle(.borderedProminent)
                 .padding()
+                .navigationDestination(isPresented: $navigateToDailyTrackerView) {
+                    DailyTrackerView()
+                }
             }
             .padding()
-            .navigationDestination(isPresented: $navigateToDailyTrackerView) {
-                DailyTrackerView() // Make sure DailyTrackerView is defined elsewhere in your project
-            }
         }
     }
 }
 
-
 struct OnboardingView_Previews: PreviewProvider {
     static var previews: some View {
         OnboardingView()
-            .environmentObject(AuthViewModel()) // Ensure you provide the AuthViewModel environment object
+            .environmentObject(AuthViewModel())
     }
 }
